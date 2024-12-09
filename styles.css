@@ -1,0 +1,98 @@
+/* Navbar & Navmenu */
+:root {
+    --background-navbar: rgba(55, 55, 55, 0.98);
+}
+
+.header, .menu {
+    background: var(--background-navbar);
+}
+
+.header {
+    position: fixed;
+    width: 100%;
+    height: 40px; /* 高さを縮小 */
+}
+
+.menu {
+    list-style: none;
+    position: absolute;
+    top: 0;
+    margin-top: 40px; /* メニューの開始位置も調整 */
+    padding: 0 0 8px; /* 下の余白を縮小 */
+    background: var(--background-navbar);
+    transition: 0.32s cubic-bezier(0.04, 0.04, 0.12, 0.96);
+    transform: scale(1, 0);
+    transform-origin: top;
+}
+
+/* Nav items */
+.menu a, .menu li {
+    font-weight: 500;
+    letter-spacing: 1px; /* 文字間隔を縮小 */
+    font-size: 14px; /* フォントサイズを縮小 */
+    text-transform: capitalize;
+    color: #ddd;
+    opacity: 0;
+    transition: 0.5s;
+}
+
+.menu li {
+    border-top: 1px solid rgb(75, 75, 75);
+    padding: 12px 0; /* メニュー項目の余白を縮小 */
+    margin: 0 40px; /* 両端の余白を縮小 */
+}
+
+.menu-btn:checked ~ .menu a, 
+.menu-btn:checked ~ .menu li {
+    opacity: 1;
+    transition: 0.32s cubic-bezier(0.04, 0.04, 0.12, 0.96) 0.2s;
+}
+
+/* Hamburger menu */
+.menu-icon {
+    display: inline-block;
+    cursor: pointer;
+    padding: 18px 14px; /* ハンバーガーメニューのボタンサイズを調整 */
+}
+
+.navicon {
+    background: #ddd;
+    display: block;
+    height: 2px; /* ナビゲーションアイコンの高さを縮小 */
+    width: 20px; /* 幅を縮小 */
+    transition: 0.32s cubic-bezier(0.04, 0.04, 0.12, 0.96);
+}
+
+.navicon:before, .navicon:after {
+    content: "";
+    position: absolute;
+    background: #ddd;
+    width: 100%;
+    height: 100%;
+    transition: 0.32s cubic-bezier(0.04, 0.04, 0.12, 0.96);
+}
+
+.navicon:before {
+    top: 6px; /* 前後のアイコンの位置を縮小 */
+}
+
+.navicon:after {
+    bottom: 6px; /* 前後のアイコンの位置を縮小 */
+}
+
+/* Navbar Text */
+.navtext-container {
+    width: 100%;
+    height: 40px; /* 高さを縮小 */
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navtext {
+    color: #ddd;
+    font-size: 16px; /* フォントサイズを縮小 */
+    letter-spacing: 3px; /* 文字間隔を縮小 */
+    text-transform: uppercase;
+}
