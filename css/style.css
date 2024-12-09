@@ -140,7 +140,7 @@ body:not(.home) header {
 	margin: 0;padding: 0;
 	width: 20vw;	/*ロゴの幅*/
 	position: relative;z-index: 1;
-	left: 4.5vw;	/*左からの配置場所*/
+	left: 2.0vw;	/*左からの配置場所*/
 	top: 0vw;		/*上からの配置場所*/
 }
 
