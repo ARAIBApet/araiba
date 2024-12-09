@@ -1,0 +1,124 @@
+@charset "utf-8";
+
+
+/*スライドショー
+ここでは、16:9の画像比率（9÷16=0.5625）を読み込む指定を行なっています。
+異なる画像比率にしたい場合、.slide-type1のpadding-topの数字を変更します。
+---------------------------------------------------------------------------*/
+
+	/*画面幅500px以下の追加指定*/
+	@media screen and (max-width:500px) {
+	
+	/*スライドショーブロック内のsvg要素*/
+	#svg-box svg {
+		display: none;	/*ロゴが小さくなりすぎるので枠を消す*/
+	}
+	
+	}/*追加設定ここまで*/
+
+
+/*スライドショーボックス*/
+#svg-box {
+	flex-shrink: 0;
+	padding: 0 var(--space-small);	/*上下、左右への余白。*/
+	position: relative;
+	overflow: hidden;
+}
+
+/*3枚の画像を囲むブロック*/
+.slide-type1 {
+	width: 100%;
+	height: 0;
+	padding-top: 56.25%;	/*アスペクト比*/
+	position: relative;
+	clip-path: url(#myClip1);	/*SVG画像との紐付け*/
+}
+
+	/*画面幅500px以下の追加指定*/
+	@media screen and (max-width:500px) {
+	
+	#svg-box {
+		border-radius: 10px;	/*svgを外すので、代わりに角丸の指定*/
+	}
+	
+	}/*追加設定ここまで*/
+
+
+/*３枚の画像の共通設定*/
+.slide-type1 .slide {
+	position: absolute;right: 0px;top: 0px;
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+	transition: opacity 1s;	/*ここの1s（＝1秒）を変更すると、フェードのスピードを変更できます。１枚が表示される時間はjsで指定できます。*/
+}
+
+/*以下は変更不要*/
+.slide-type1 .slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+
+/*現在表示されているスライドのみをクリック可能にする設定（変更不要）
+---------------------------------------------------------------------------*/
+.slide-type1 .slide {
+	pointer-events: none; /* デフォルトでクリックを無効にする */
+}
+
+.slide-type1 .slide.active {
+	pointer-events: auto; /* 表示中のスライドのみクリックを有効にする */
+}
+
+
+/*現在表示中のボタン
+---------------------------------------------------------------------------*/
+/*全体*/
+.slide-type1 .slide-indicators {
+    text-align: center;
+	position: absolute;
+	width: 100%;
+	bottom: 10px;	/*ボタンの配置場所。スライドショーの画面下からの距離。*/
+	left: 0px;
+}
+
+/*ボタン１個あたり*/
+.slide-type1 .indicator {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    background: #ccc;	/*未アクティブ時のボタン色*/
+	border: 4px solid #fff;	/*枠線の幅、線種、色。*/
+    border-radius: 50%;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+/*アクティブ時のボタン色*/
+.slide-type1 .indicator.active {
+    background: #000;
+}
+
+
+/*回転する円形のテキストアニメーション
+---------------------------------------------------------------------------*/
+@keyframes spin {
+	0% {transform: rotate(0deg);}
+	100% {transform: rotate(360deg);}
+}
+
+/*サイズや場所の指定*/
+.animation-text {
+	position: absolute;z-index: 1;
+	width: 30vw;		/*画像の幅*/
+	right: -7vw;		/*右からの距離*/
+	bottom: calc(-1 * var(--space-small));		/*下からの距離*/
+}
+
+/*アニメーションに関する指定*/
+.spin {
+	animation: spin 150s linear infinite;	/*150s（150秒）が１回転する速度です。お好みで変更して下さい。*/
+}
+
