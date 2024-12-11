@@ -141,7 +141,7 @@ body:not(.home) header {
   left: 2vw;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 500px) {
   #logo {
     width: 200px;
     top: 0;
@@ -153,7 +153,7 @@ header nav ul {
   list-style: none;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 900px) {
   header nav ul {
     margin-right: 1vw;
     display: flex;
@@ -314,7 +314,7 @@ body {
   /* テキスト部分はクリックできないようにする */
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 600px) {
   .slide-text {
     font-size: 20px;
     /* スマホ用に文字サイズを小さく調整 */
@@ -368,7 +368,7 @@ main h2 span.sub-text.no-line {
   /* スマホ向けのスタイル */
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 600px) {
   .yoko {
     padding-top: 50px;
     /* スマホ時にpadding-topを追加 */
@@ -389,7 +389,7 @@ footer {
   padding: 3vw;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 600px) {
   footer {
     display: flex;
     justify-content: space-between;
@@ -401,7 +401,7 @@ footer .image {
   text-align: center;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 500px) {
   footer .image {
     width: auto;
   }
@@ -416,7 +416,7 @@ footer .text {
   gap: 5rem;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 600px) {
   footer .text {
     /* flex direction is already handled above */
   }
@@ -499,7 +499,7 @@ footer .icons i {
   display: block;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 600px) {
   .list-c2 {
     display: flex;
     /* 横並びにする */
@@ -655,7 +655,7 @@ footer .icons i {
 }
 
 /* 画面幅600px以上の追加指定 */
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 600px) {
   .faq .text {
     width: 50%;
   }
@@ -690,7 +690,7 @@ footer .icons i {
   flex-direction: column;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 600px) {
   .list-yoko-scroll .list {
     width: 28%;
     padding: 2rem;
@@ -749,7 +749,7 @@ footer .icons i {
   margin-left: 20px;
 }
 
-/* box1（1つ目のセクションボックス） */
+/* BRAND（1つ目のセクションボックス） */
 .brand {
   overflow-x: visible;
   position: relative;
@@ -789,13 +789,13 @@ footer .icons i {
   margin-bottom: 5rem;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 600px) {
   .brand .text {
     margin-bottom: 0;
   }
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 600px) {
   .brand {
     display: flex;
     gap: 5vw;
@@ -839,6 +839,77 @@ footer .icons i {
   width: 40%;
   position: absolute;
   right: 0;
+  top: 15vw;
+}
+
+/* seihin（1つ目のセクションボックス） */
+.seihin {
+  overflow-x: visible;
+  position: relative;
+  background: #666666;
+  padding: var(--space-large);
+  margin-top: 8vw;
+}
+
+.seihin .seihin-title {
+  position: absolute;
+  left: 125px;
+  top: -13.5vw;
+  color: #5e5e5e;
+  font-size: 7vw;
+  line-height: 1;
+}
+
+.seihin .seihin-eng {
+  font-size: 50px;
+}
+
+.seihin .seihin-shokai p {
+  font-size: 20px;
+}
+
+.seihin .text {
+  margin-bottom: 5rem;
+}
+
+@media screen and (min-width: 600px) {
+  .seihin .text {
+    margin-bottom: 0;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  .seihin {
+    display: flex;
+    gap: 5vw;
+    border-radius: 20vw 0 20vw 0;
+  }
+
+  .seihin>* {
+    flex: 1;
+  }
+
+  .seihin h2 img {
+    width: 5vw;
+  }
+}
+
+.seihin .image {
+  position: relative;
+}
+
+.seihin .image img {
+  border-radius: 30px;
+}
+
+.seihin .image img:nth-of-type(1) {
+  width: 80%;
+}
+
+.seihin .image img:nth-of-type(2) {
+  width: 40%;
+  position: absolute;
+  right: 0vw;
   top: 15vw;
 }
 
@@ -953,7 +1024,7 @@ footer .icons i {
   top: 0;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 600px) {
   .list1 .text {
     width: 40%;
   }
