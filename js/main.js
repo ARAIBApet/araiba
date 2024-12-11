@@ -4,9 +4,9 @@
 //===============================================================
 function debounce(func, wait) {
     var timeout;
-    return function() {
+    return function () {
         var context = this, args = arguments;
-        var later = function() {
+        var later = function () {
             timeout = null;
             func.apply(context, args);
         };
@@ -20,75 +20,24 @@ function debounce(func, wait) {
 // メニュー関連
 //===============================================================
 
-// 変数でセレクタを管理
-var $menubar = $('#menubar');
-var $menubarHdr = $('#menubar_hdr');
-var $headerNav = $('header nav');
-
-// menu
-$(window).on("load resize", debounce(function() {
-    if(window.innerWidth < 9999) {	// ここがブレイクポイント指定箇所です
-        // 小さな端末用の処理
-        $('body').addClass('small-screen').removeClass('large-screen');
-        $menubar.addClass('display-none').removeClass('display-block');
-        $menubarHdr.removeClass('display-none ham').addClass('display-block');
-    } else {
-        // 大きな端末用の処理
-        $('body').addClass('large-screen').removeClass('small-screen');
-        $menubar.addClass('display-block').removeClass('display-none');
-        $menubarHdr.removeClass('display-block').addClass('display-none');
-
-        // ドロップダウンメニューが開いていれば、それを閉じる
-        $('.ddmenu_parent > ul').hide();
-    }
-}, 10));
-
-$(function() {
-
-    // ハンバーガーメニューをクリックした際の処理
-    $menubarHdr.click(function() {
-        $(this).toggleClass('ham');
-        if ($(this).hasClass('ham')) {
-            $menubar.addClass('display-block');
-        } else {
-            $menubar.removeClass('display-block');
-        }
-    });
-
-    // アンカーリンクの場合にメニューを閉じる処理
-    $menubar.find('a[href*="#"]').click(function() {
-        $menubar.removeClass('display-block');
-        $menubarHdr.removeClass('ham');
-    });
-
-    // ドロップダウンの親liタグ（空のリンクを持つaタグのデフォルト動作を防止）
-	$menubar.find('a[href=""]').click(function() {
-		return false;
-	});
-	$headerNav.find('a[href=""]').click(function() {
-		return false;
-	});
-
-	// ドロップダウンメニューの処理
-    $menubar.find('li:has(ul)').addClass('ddmenu_parent');
-    $('.ddmenu_parent > a').addClass('ddmenu');
-    $headerNav.find('li:has(ul)').addClass('ddmenu_parent');
-    $('.ddmenu_parent > a').addClass('ddmenu');
-
-// タッチ開始位置を格納する変数
+document.getElementById('hamburgerMenu').addEventListener('click', function () {
+    // ハンバーガーメニューのアイコンとサイドメニューのクラスを切り替え
+    this.classList.toggle('open');
+    document.getElementById('sideMenu').classList.toggle('open');
+});// タッチ開始位置を格納する変数
 var touchStartY = 0;
 
 // タッチデバイス用
-$('.ddmenu').on('touchstart', function(e) {
+$('.ddmenu').on('touchstart', function (e) {
     // タッチ開始位置を記録
     touchStartY = e.originalEvent.touches[0].clientY;
-}).on('touchend', function(e) {
+}).on('touchend', function (e) {
     // タッチ終了時の位置を取得
     var touchEndY = e.originalEvent.changedTouches[0].clientY;
-    
+
     // タッチ開始位置とタッチ終了位置の差分を計算
     var touchDifference = touchStartY - touchEndY;
-    
+
     // スクロール動作でない（差分が小さい）場合にのみドロップダウンを制御
     if (Math.abs(touchDifference) < 10) { // 10px以下の移動ならタップとみなす
         var $nextUl = $(this).next('ul');
@@ -102,55 +51,12 @@ $('.ddmenu').on('touchstart', function(e) {
     }
 });
 
-    //PC用
-    $('.ddmenu_parent').hover(function() {
-        $(this).children('ul').stop().show();
-    }, function() {
-        $(this).children('ul').stop().hide();
-    });
-
-    // ドロップダウンをページ内リンクで使った場合に、ドロップダウンを閉じる
-    $('.ddmenu_parent ul a').click(function() {
-        $('.ddmenu_parent > ul').hide();
-    });
-
-});
-
-
-//===============================================================
-// 小さなメニューが開いている際のみ、body要素のスクロールを禁止。
-//===============================================================
-$(function() {
-  function toggleBodyScroll() {
-    // 条件をチェック
-    if ($('#menubar_hdr').hasClass('ham') && !$('#menubar_hdr').hasClass('display-none')) {
-      // #menubar_hdr が 'ham' クラスを持ち、かつ 'display-none' クラスを持たない場合、スクロールを禁止
-      $('body').css({
-        overflow: 'hidden',
-        height: '100%'
-      });
-    } else {
-      // その他の場合、スクロールを再び可能に
-      $('body').css({
-        overflow: '',
-        height: ''
-      });
-    }
-  }
-
-  // 初期ロード時にチェックを実行
-  toggleBodyScroll();
-
-  // クラスが動的に変更されることを想定して、MutationObserverを使用
-  const observer = new MutationObserver(toggleBodyScroll);
-  observer.observe(document.getElementById('menubar_hdr'), { attributes: true, attributeFilter: ['class'] });
-});
 
 
 //===============================================================
 // スムーススクロール（※バージョン2024-1）※通常タイプ
 //===============================================================
-$(function() {
+$(function () {
     // ページ上部へ戻るボタンのセレクター
     var topButton = $('.pagetop');
     // ページトップボタン表示用のクラス名
@@ -162,11 +68,11 @@ $(function() {
         // スクロール先の位置を計算（ページトップの場合は0、それ以外は要素の位置）
         var scrollTo = target === '#' ? 0 : $(target).offset().top;
         // アニメーションでスムーススクロールを実行
-        $('html, body').animate({scrollTop: scrollTo}, 500);
+        $('html, body').animate({ scrollTop: scrollTo }, 500);
     }
 
     // ページ内リンクとページトップへ戻るボタンにクリックイベントを設定
-    $('a[href^="#"], .pagetop').click(function(e) {
+    $('a[href^="#"], .pagetop').click(function (e) {
         e.preventDefault(); // デフォルトのアンカー動作をキャンセル
         var id = $(this).attr('href') || '#'; // クリックされた要素のhref属性を取得、なければ'#'
         smoothScroll(id); // スムーススクロールを実行
@@ -174,8 +80,8 @@ $(function() {
 
     // スクロールに応じてページトップボタンの表示/非表示を切り替え
     $(topButton).hide(); // 初期状態ではボタンを隠す
-    $(window).scroll(function() {
-        if($(this).scrollTop() >= 300) { // スクロール位置が300pxを超えたら
+    $(window).scroll(function () {
+        if ($(this).scrollTop() >= 300) { // スクロール位置が300pxを超えたら
             $(topButton).fadeIn().addClass(scrollShow); // ボタンを表示
         } else {
             $(topButton).fadeOut().removeClass(scrollShow); // それ以外では非表示
@@ -183,11 +89,11 @@ $(function() {
     });
 
     // ページロード時にURLのハッシュが存在する場合の処理
-    if(window.location.hash) {
+    if (window.location.hash) {
         // ページの最上部に即時スクロールする
         $('html, body').scrollTop(0);
         // 少し遅延させてからスムーススクロールを実行
-        setTimeout(function() {
+        setTimeout(function () {
             smoothScroll(window.location.hash);
         }, 10);
     }
@@ -197,21 +103,21 @@ $(function() {
 //===============================================================
 // 画像がスクロールと少しずれて移動
 //===============================================================
-$(window).on('scroll', function() {
-  var scrollTop = $(this).scrollTop();
-  $('.speed1').css('transform', 'translateY(' + (-scrollTop * 0.1) + 'px)');
+$(window).on('scroll', function () {
+    var scrollTop = $(this).scrollTop();
+    $('.speed1').css('transform', 'translateY(' + (-scrollTop * 0.1) + 'px)');
 });
-$(window).on('scroll', function() {
-  var scrollTop = $(this).scrollTop();
-  $('.speed2').css('transform', 'translateY(' + (-scrollTop * 0.05) + 'px)');
+$(window).on('scroll', function () {
+    var scrollTop = $(this).scrollTop();
+    $('.speed2').css('transform', 'translateY(' + (-scrollTop * 0.05) + 'px)');
 });
 
 
 //===============================================================
 // スライドショー
 //===============================================================
-$(function() {
-    $('.slide-type1').each(function() {
+$(function () {
+    $('.slide-type1').each(function () {
         var $this = $(this);
         var slides = $this.find('.slide');
         var slideCount = slides.length;
@@ -233,7 +139,7 @@ $(function() {
         slides.eq(currentIndex).css('opacity', 1).addClass('active');
 
         // インジケータをクリックしたときの動作を設定
-        indicatorElements.on('click', function() {
+        indicatorElements.on('click', function () {
             var clickedIndex = $(this).data('index');
 
             // 現在のスライドと同じ場合は何もしない
@@ -252,7 +158,7 @@ $(function() {
         });
 
         // 自動スライドのタイマー
-        setInterval(function() {
+        setInterval(function () {
             var nextIndex = (currentIndex + 1) % slideCount;
 
             // スライドの切り替え
@@ -273,8 +179,8 @@ $(function() {
 //===============================================================
 // サムネイルスライドショー
 //===============================================================
-$(document).ready(function() {
-    $('.slide-thumbnail1 .img').each(function() {
+$(document).ready(function () {
+    $('.slide-thumbnail1 .img').each(function () {
         var $imgParts = $(this);
         var $divs = $imgParts.children('div');
         var divCount = $divs.length;
@@ -307,10 +213,10 @@ $(document).ready(function() {
         $divs.clone().appendTo($imgParts);
 
         // アニメーションの一時停止と再開
-        $imgParts.on('mouseenter', function() {
+        $imgParts.on('mouseenter', function () {
             $(this).css('animation-play-state', 'paused');
         });
-        $imgParts.on('mouseleave', function() {
+        $imgParts.on('mouseleave', function () {
             $(this).css('animation-play-state', 'running');
         });
     });
