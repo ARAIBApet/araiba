@@ -1,6 +1,7 @@
 @charset "UTF-8";
 /*読み込み*/
 @import url("slide.css");
+
 /*CSSカスタムプロパティ（サイト全体を一括管理する為の設定）
 ---------------------------------------------------------------------------*/
 :root {
@@ -16,10 +17,12 @@
   0% {
     opacity: 0;
   }
+
   100% {
     opacity: 1;
   }
 }
+
 /*全体の設定
 ---------------------------------------------------------------------------*/
 * {
@@ -33,17 +36,21 @@ body {
 }
 
 @media screen and (min-width: 1200px) {
+
   html,
   body {
     font-size: 14px;
   }
 }
+
 @media screen and (min-width: 1600px) {
+
   html,
   body {
     font-size: 1vw;
   }
 }
+
 body {
   margin: 0;
   padding: 0;
@@ -133,6 +140,7 @@ body:not(.home) header {
   z-index: 1;
   left: 2vw;
 }
+
 @media screen and (max-width: 500px) {
   #logo {
     width: 200px;
@@ -144,11 +152,13 @@ header nav ul {
   display: none;
   list-style: none;
 }
+
 @media screen and (min-width: 900px) {
   header nav ul {
     margin-right: 1vw;
     display: flex;
   }
+
   header nav ul li a {
     display: block;
     text-decoration: none;
@@ -193,6 +203,7 @@ body {
     /* スマホの場合は表示 */
   }
 }
+
 /* デスクトップの場合はハンバーガーメニューを非表示に */
 @media (min-width: 769px) {
   .hamburger-menu {
@@ -200,6 +211,7 @@ body {
     /* デスクトップでは非表示 */
   }
 }
+
 .bar {
   height: 5px;
   width: 100%;
@@ -314,6 +326,7 @@ body {
     /* 必要に応じて中央揃え解除 */
   }
 }
+
 /*main（メインコンテンツ）
 ---------------------------------------------------------------------------*/
 main {
@@ -332,9 +345,11 @@ main h2 {
   flex-direction: column-reverse;
   align-items: flex-start;
 }
+
 main h2.c {
   align-items: center;
 }
+
 main h2 span.sub-text {
   display: inline-block;
   border-top: 1px solid var(--primary-color);
@@ -343,6 +358,7 @@ main h2 span.sub-text {
   letter-spacing: 0.1rem;
   padding-top: 2rem;
 }
+
 main h2 span.sub-text.no-line {
   border: none;
   padding-top: 0;
@@ -351,6 +367,7 @@ main h2 span.sub-text.no-line {
 .yoko {
   /* スマホ向けのスタイル */
 }
+
 @media screen and (max-width: 600px) {
   .yoko {
     padding-top: 50px;
@@ -371,43 +388,52 @@ footer {
   font-size: 1.2rem;
   padding: 3vw;
 }
+
 @media screen and (min-width: 600px) {
   footer {
     display: flex;
     justify-content: space-between;
   }
 }
+
 footer .image {
   width: 400px;
   text-align: center;
 }
+
 @media screen and (max-width: 500px) {
   footer .image {
     width: auto;
   }
+
   footer .image img {
     width: 300px;
   }
 }
+
 footer .text {
   display: flex;
   gap: 5rem;
 }
+
 @media screen and (min-width: 600px) {
   footer .text {
     /* flex direction is already handled above */
   }
 }
+
 footer h4 {
   font-weight: 200;
   font-size: 1.2rem;
 }
+
 footer .icons {
   list-style: none;
   display: flex;
   align-self: center;
   gap: 0.5rem;
 }
+
 footer .icons i {
   font-size: 10px;
 }
@@ -421,29 +447,36 @@ footer .icons i {
   grid-template-areas: "img1 img2 img2" "img1 img3 img5" "img1 img3 img5" "img4 img4 img6";
   margin: 0 8rem;
 }
+
 .gallery img {
   display: block;
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   border-radius: 0.5rem;
 }
+
 .gallery .img1 {
   grid-area: img1;
 }
+
 .gallery .img2 {
   grid-area: img2;
 }
+
 .gallery .img3 {
   grid-area: img3;
 }
+
 .gallery .img4 {
   grid-area: img4;
 }
+
 .gallery .img5 {
   grid-area: img5;
 }
+
 .gallery .img6 {
   grid-area: img6;
 }
@@ -453,38 +486,46 @@ footer .icons i {
     margin: 0 2.3rem;
   }
 }
+
 /*list-c2（お問い合わせ、オンラインショップ）
 ---------------------------------------------------------------------------*/
 .list-c2 {
   /* 画面幅600px以上の追加指定 */
   /* ボックス1個あたり */
 }
+
 .list-c2 a {
   text-decoration: none;
   display: block;
 }
+
 @media screen and (min-width: 600px) {
   .list-c2 {
     display: flex;
     /* 横並びにする */
   }
-  .list-c2 > * {
+
+  .list-c2>* {
     flex: 1;
   }
+
   .list-c2 .list {
     margin: 0;
     display: flex;
     align-items: center;
     justify-content: center;
   }
+
   .list-c2 a .list {
     height: 100%;
   }
+
   .list-c2 h4 .main-text {
     font-size: 4rem;
     /* 文字サイズ */
   }
 }
+
 .list-c2 .list {
   text-align: center;
   position: relative;
@@ -504,12 +545,14 @@ footer .icons i {
   /* ボックス内のボタン（.btn2） */
   /* ボックス内のボタン（.btn3） */
 }
+
 .list-c2 .list h4 {
   font-weight: 200;
   /* 細字 */
   line-height: 1.2;
   /* 行間を狭く */
 }
+
 .list-c2 .list h4 .main-text {
   display: block;
   font-size: 3rem;
@@ -519,12 +562,15 @@ footer .icons i {
   padding-bottom: 3rem;
   /* 下に余白 */
 }
+
 .list-c2 .list h4 .sub-text {
   position: relative;
   padding: 0 5rem;
   /* 上下、左右への余白 */
 }
-.list-c2 .list h4 .sub-text::before, .list-c2 .list h4 .sub-text::after {
+
+.list-c2 .list h4 .sub-text::before,
+.list-c2 .list h4 .sub-text::after {
   content: "";
   position: absolute;
   top: 50%;
@@ -533,12 +579,15 @@ footer .icons i {
   border-top: 1px solid #fff;
   /* ラインの幅、線種、色 */
 }
+
 .list-c2 .list h4 .sub-text::before {
   left: 0;
 }
+
 .list-c2 .list h4 .sub-text::after {
   right: 0;
 }
+
 .list-c2 .list .text {
   position: relative;
   z-index: 2;
@@ -546,6 +595,7 @@ footer .icons i {
   font-size: 0.85rem;
   /* 文字サイズ */
 }
+
 .list-c2 .list::before {
   content: "";
   position: absolute;
@@ -558,21 +608,27 @@ footer .icons i {
   transition: transform 0.3s 0.1s;
   /* アニメーションの速度 */
 }
+
 .list-c2 .list:hover::before {
   transform: translateY(100%);
   /* マウスオンで半透明の黒を枠外へ出す */
 }
-.list-c2 .list.image1, .list-c2 .list.image2 {
+
+.list-c2 .list.image1,
+.list-c2 .list.image2 {
   background: url("../images/sample4.jpg") no-repeat center center/cover;
   /* 画像が最背面に配置されるように */
 }
+
 .list-c2 .list.image2 {
   background: url("../images/sample5.jpg") no-repeat center center/cover;
 }
+
 .list-c2 .list .btn2 a {
   background: rgba(0, 0, 0, 0.7);
   /* 背景色 */
 }
+
 .list-c2 .list .btn1 a {
   text-shadow: none;
   /* テキストの影を消す */
@@ -586,12 +642,14 @@ footer .icons i {
   max-width: 700px;
   margin: 0 auto;
 }
+
 .new dt,
 .new dd {
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   padding-top: 2rem;
   padding-bottom: 2rem;
 }
+
 .new .new dt {
   padding-right: 4rem;
 }
@@ -602,6 +660,7 @@ footer .icons i {
     width: 50%;
   }
 }
+
 /* list-yoko-scroll（お客様の声） */
 .list-yoko-scroll {
   display: flex;
@@ -611,13 +670,16 @@ footer .icons i {
   margin-right: calc(-1 * var(--space-large));
   padding-bottom: 3vw;
 }
+
 .list-yoko-scroll * {
   margin: 0;
   padding: 0;
 }
+
 .list-yoko-scroll::-webkit-scrollbar {
   display: none;
 }
+
 .list-yoko-scroll .list {
   width: 60%;
   flex-shrink: 0;
@@ -627,50 +689,62 @@ footer .icons i {
   display: flex;
   flex-direction: column;
 }
+
 @media screen and (min-width: 600px) {
   .list-yoko-scroll .list {
     width: 28%;
     padding: 2rem;
   }
 }
+
 .list-yoko-scroll .list .text {
   flex: 1;
 }
-.list-yoko-scroll .list::before, .list-yoko-scroll .list::after {
+
+.list-yoko-scroll .list::before,
+.list-yoko-scroll .list::after {
   content: "";
   position: absolute;
   width: 30px;
   height: 10px;
   border: 0.5px solid var(--primary-color);
 }
-.list-yoko-scroll .list::before:first-of-type, .list-yoko-scroll .list::after:first-of-type {
+
+.list-yoko-scroll .list::before:first-of-type,
+.list-yoko-scroll .list::after:first-of-type {
   left: 0;
   top: 0;
   border-right: none;
   border-bottom: none;
 }
-.list-yoko-scroll .list::before:last-of-type, .list-yoko-scroll .list::after:last-of-type {
+
+.list-yoko-scroll .list::before:last-of-type,
+.list-yoko-scroll .list::after:last-of-type {
   right: 0;
   bottom: 0;
   border-top: none;
   border-left: none;
 }
+
 .list-yoko-scroll .list h4 {
   margin-bottom: 1rem;
 }
+
 .list-yoko-scroll .list p {
   font-size: 0.9rem;
 }
+
 .list-yoko-scroll .list .name {
   text-align: right;
 }
+
 .list-yoko-scroll .list .name img {
   width: 50px;
   height: 50px;
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   -o-object-position: center;
-     object-position: center;
+  object-position: center;
   border-radius: 50%;
   margin-left: 20px;
 }
@@ -683,6 +757,7 @@ footer .icons i {
   padding: var(--space-large);
   margin-top: 10vw;
 }
+
 .brand .brand-text {
   position: absolute;
   right: 0;
@@ -691,61 +766,75 @@ footer .icons i {
   font-size: 7vw;
   line-height: 1;
 }
+
 .brand .illust1,
 .brand .illust2 {
   position: absolute;
   opacity: 0.2;
 }
+
 .brand .illust1 {
   right: 20vw;
   top: 9vw;
   width: 23vw;
 }
+
 .brand .illust2 {
   right: 4vw;
   top: 2vw;
   width: 13vw;
 }
+
 .brand .text {
   margin-bottom: 5rem;
 }
+
 @media screen and (min-width: 600px) {
   .brand .text {
     margin-bottom: 0;
   }
 }
+
 @media screen and (min-width: 600px) {
   .brand {
     display: flex;
     gap: 5vw;
     border-radius: 20vw 0 20vw 0;
   }
-  .brand > * {
+
+  .brand>* {
     flex: 1;
   }
+
   .brand .illust1 {
     left: 3vw;
     top: -4vw;
     width: 12vw;
   }
+
   .brand .illust2 {
     left: 16vw;
     top: -10vw;
     width: 8vw;
   }
+
   .brand h2 img {
     width: 5vw;
   }
 }
+
 .brand .image {
   position: relative;
 }
+
 .brand .image img {
   border-radius: 10px;
 }
+
 .brand .image img:nth-of-type(1) {
   width: 80%;
 }
+
 .brand .image img:nth-of-type(2) {
   width: 40%;
   position: absolute;
@@ -759,6 +848,7 @@ footer .icons i {
   background-position: 17% 50px;
   /* 横位置を左から10%の位置に変更 */
 }
+
 @media (max-width: 768px) {
   .logo-kazari {
     background-size: 70%;
@@ -794,6 +884,7 @@ footer .icons i {
   /* マウスホバー時にテキスト色を変更 */
   /* マウスホバー時にぼかしの白いエフェクトを適用 */
 }
+
 .list1::before {
   content: "";
   position: absolute;
@@ -805,9 +896,11 @@ footer .icons i {
   /* 影の背景を黒に戻す */
   transition: transform 0.8s;
 }
+
 .list1:hover::before {
   transform: translateX(100%);
 }
+
 .list1 .text {
   position: relative;
   z-index: 1;
@@ -819,9 +912,11 @@ footer .icons i {
   transition: color 0.3s, box-shadow 0.3s;
   /* 色とぼかしのアニメーション */
 }
+
 .list1:hover .text {
   color: black;
 }
+
 .list1:hover .text::before {
   content: "";
   position: absolute;
@@ -835,6 +930,7 @@ footer .icons i {
   /* 白く濃くぼかす */
   z-index: -1;
 }
+
 .list1 h3 {
   margin: 0;
   padding: 0;
@@ -844,9 +940,11 @@ footer .icons i {
   letter-spacing: 0.1rem;
   line-height: 1.2;
 }
+
 .list1 h3 .large {
   font-size: 4rem;
 }
+
 .list1 h3 span:not(.large) {
   font-size: 1rem;
   opacity: 0.5;
@@ -854,8 +952,11 @@ footer .icons i {
   right: 0;
   top: 0;
 }
+
 @media screen and (min-width: 600px) {
   .list1 .text {
     width: 40%;
   }
-}/*# sourceMappingURL=style.css.map */
+}
+
+/*# sourceMappingURL=style.css.map */
