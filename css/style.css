@@ -135,7 +135,7 @@ body:not(.home) header {
 }
 @media screen and (max-width: 500px) {
   #logo {
-    width: 100px;
+    width: 200px;
     top: 0;
   }
 }
@@ -162,6 +162,158 @@ header nav ul ul,
   animation: opa1 0.5s 0.1s both;
 }
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+.hamburger-menu {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 25px;
+  cursor: pointer;
+  z-index: 9999;
+  /* ここでメニューを前面に表示 */
+}
+
+/* スマホサイズでのみハンバーガーメニューを表示 */
+@media (max-width: 768px) {
+  .hamburger-menu {
+    display: flex;
+    /* スマホの場合は表示 */
+  }
+}
+/* デスクトップの場合はハンバーガーメニューを非表示に */
+@media (min-width: 769px) {
+  .hamburger-menu {
+    display: none;
+    /* デスクトップでは非表示 */
+  }
+}
+.bar {
+  height: 5px;
+  width: 100%;
+  background-color: #333;
+  transition: all 0.3s ease;
+}
+
+.side-menu {
+  position: fixed;
+  top: 0;
+  right: -250px;
+  /* 初期位置は右外 */
+  height: 100%;
+  width: 250px;
+  background-color: #333;
+  color: white;
+  padding: 20px;
+  transition: right 0.3s ease;
+  z-index: 9998;
+  /* メニューが他の要素の前に来るように */
+}
+
+.side-menu ul {
+  list-style: none;
+}
+
+.side-menu ul li {
+  margin: 20px 0;
+}
+
+.side-menu ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.side-menu.open {
+  right: 0;
+  /* メニューが右から出てくる */
+}
+
+/* ハンバーガーメニューのバーが開いたとき */
+.hamburger-menu.open .bar:nth-child(1) {
+  transform: rotate(45deg) translateY(8px);
+  background-color: white;
+  /* ×の部分を白に */
+}
+
+.hamburger-menu.open .bar:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger-menu.open .bar:nth-child(3) {
+  transform: rotate(-45deg) translateY(-8px);
+  background-color: white;
+  /* ×の部分を白に */
+}
+
+/* クリック時のアニメーションが正しく動作するための調整 */
+.hamburger-menu.open .bar:nth-child(1),
+.hamburger-menu.open .bar:nth-child(3) {
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.hamburger-menu.open .bar:nth-child(2) {
+  transition: opacity 0.3s ease;
+}
+
+/*スライド
+---------------------------------------------------------------------------*/
+#svg-box {
+  position: relative;
+}
+
+.slide {
+  position: relative;
+}
+
+.slide img {
+  display: block;
+  width: 100%;
+  /* 必要に応じて調整 */
+}
+
+.slide-text {
+  position: absolute;
+  top: 50px;
+  /* 上下中央揃え */
+  left: 20%;
+  /* 左右中央揃え */
+  transform: translate(-50%, -50%);
+  color: white;
+  /* テキストの色 */
+  font-size: 40px;
+  /* テキストサイズ */
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  /* テキストの影 */
+  pointer-events: none;
+  /* テキスト部分はクリックできないようにする */
+}
+
+@media screen and (max-width: 600px) {
+  .slide-text {
+    font-size: 20px;
+    /* スマホ用に文字サイズを小さく調整 */
+    top: 30px;
+    /* 上の余白を調整 */
+    left: 10%;
+    /* 左の余白を調整 */
+    transform: translate(0, 0);
+    /* 必要に応じて中央揃え解除 */
+  }
+}
 /*main（メインコンテンツ）
 ---------------------------------------------------------------------------*/
 main {
@@ -524,14 +676,14 @@ footer .icons i {
 }
 
 /* box1（1つ目のセクションボックス） */
-.box1 {
+.brand {
   overflow-x: visible;
   position: relative;
   background: #fff2d7;
   padding: var(--space-large);
   margin-top: 10vw;
 }
-.box1 .deco-text {
+.brand .brand-text {
   position: absolute;
   right: 0;
   top: -13.5vw;
@@ -539,62 +691,62 @@ footer .icons i {
   font-size: 7vw;
   line-height: 1;
 }
-.box1 .illust1,
-.box1 .illust2 {
+.brand .illust1,
+.brand .illust2 {
   position: absolute;
   opacity: 0.2;
 }
-.box1 .illust1 {
+.brand .illust1 {
   right: 20vw;
   top: 9vw;
   width: 23vw;
 }
-.box1 .illust2 {
+.brand .illust2 {
   right: 4vw;
   top: 2vw;
   width: 13vw;
 }
-.box1 .text {
+.brand .text {
   margin-bottom: 5rem;
 }
 @media screen and (min-width: 600px) {
-  .box1 .text {
+  .brand .text {
     margin-bottom: 0;
   }
 }
 @media screen and (min-width: 600px) {
-  .box1 {
+  .brand {
     display: flex;
     gap: 5vw;
     border-radius: 20vw 0 20vw 0;
   }
-  .box1 > * {
+  .brand > * {
     flex: 1;
   }
-  .box1 .illust1 {
+  .brand .illust1 {
     left: 3vw;
     top: -4vw;
     width: 12vw;
   }
-  .box1 .illust2 {
+  .brand .illust2 {
     left: 16vw;
     top: -10vw;
     width: 8vw;
   }
-  .box1 h2 img {
+  .brand h2 img {
     width: 5vw;
   }
 }
-.box1 .image {
+.brand .image {
   position: relative;
 }
-.box1 .image img {
+.brand .image img {
   border-radius: 10px;
 }
-.box1 .image img:nth-of-type(1) {
+.brand .image img:nth-of-type(1) {
   width: 80%;
 }
-.box1 .image img:nth-of-type(2) {
+.brand .image img:nth-of-type(2) {
   width: 40%;
   position: absolute;
   right: 0;
