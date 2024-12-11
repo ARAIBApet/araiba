@@ -1,7 +1,6 @@
 @charset "UTF-8";
 /*読み込み*/
 @import url("slide.css");
-@import url("inview.css");
 /*CSSカスタムプロパティ（サイト全体を一括管理する為の設定）
 ---------------------------------------------------------------------------*/
 :root {
@@ -267,7 +266,8 @@ footer .icons i {
   display: grid;
   grid-template: repeat(4, 20vw)/repeat(3, 1fr);
   gap: 0.5rem;
-  grid-template-areas: "img1 img2 img2" "img1 img3 img3" "img4 img3 img5" "img4 img3 img6";
+  grid-template-areas: "img1 img2 img2" "img1 img3 img5" "img1 img3 img5" "img4 img4 img6";
+  margin: 0 8rem;
 }
 .gallery img {
   display: block;
@@ -277,98 +277,109 @@ footer .icons i {
      object-fit: cover;
   border-radius: 0.5rem;
 }
-
-.img1 {
+.gallery .img1 {
   grid-area: img1;
 }
-
-.img2 {
+.gallery .img2 {
   grid-area: img2;
 }
-
-.img3 {
+.gallery .img3 {
   grid-area: img3;
 }
-
-.img4 {
+.gallery .img4 {
   grid-area: img4;
 }
-
-.img5 {
+.gallery .img5 {
   grid-area: img5;
 }
-
-.img6 {
+.gallery .img6 {
   grid-area: img6;
 }
 
+@media screen and (max-width: 768px) {
+  .gallery {
+    margin: 0 2.3rem;
+  }
+}
 /*list-c2（お問い合わせ、オンラインショップ）
 ---------------------------------------------------------------------------*/
 .list-c2 {
-  display: flex;
-  flex-wrap: wrap;
-  /* PC画面では横並びにする */
-  /* スマートフォン画面では縦並びにする */
+  /* 画面幅600px以上の追加指定 */
+  /* ボックス1個あたり */
 }
-.list-c2 > a {
+.list-c2 a {
   text-decoration: none;
   display: block;
+}
+@media screen and (min-width: 600px) {
+  .list-c2 {
+    display: flex;
+    /* 横並びにする */
+  }
+  .list-c2 > * {
+    flex: 1;
+  }
+  .list-c2 .list {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .list-c2 a .list {
+    height: 100%;
+  }
+  .list-c2 h4 .main-text {
+    font-size: 4rem;
+    /* 文字サイズ */
+  }
 }
 .list-c2 .list {
   text-align: center;
   position: relative;
   overflow-y: hidden;
   color: #fff;
-  padding: 5rem 10rem;
+  /* 文字色 */
+  text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.6);
+  /* テキストの影 */
+  padding: 5rem 2rem;
+  /* 上下、左右の余白 */
   margin: 1rem 0;
+  /* 上下、左右のマージン */
   z-index: 1;
-  /* 画像部分のマウスオーバー時（画像のみぼかす） */
-}
-.list-c2 .list.image1, .list-c2 .list.image2 {
-  background-size: cover;
-  background-position: center;
-  height: 80%;
-  width: 100%;
-  transition: all 0.5s ease;
-}
-.list-c2 .list.image1 {
-  background: url("../images/sample4.jpg") no-repeat center center/cover;
-}
-.list-c2 .list.image2 {
-  background: url("../images/sample5.jpg") no-repeat center center/cover;
-}
-.list-c2 .list:hover .image1,
-.list-c2 .list:hover .image2 {
-  filter: blur(3.5px);
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  /* 画像より上に配置する */
+  /* h4見出し */
+  /* マウスオン用のアニメーション */
+  /* ボックス内のボタン（.btn2） */
+  /* ボックス内のボタン（.btn3） */
 }
 .list-c2 .list h4 {
   font-weight: 200;
+  /* 細字 */
   line-height: 1.2;
-  position: relative;
-  z-index: 2;
+  /* 行間を狭く */
 }
 .list-c2 .list h4 .main-text {
   display: block;
   font-size: 3rem;
+  /* 文字サイズ */
   padding-top: 1.5rem;
+  /* 上に余白 */
   padding-bottom: 3rem;
-}
-@media screen and (min-width: 600px) {
-  .list-c2 .list h4 .main-text {
-    font-size: 4rem;
-  }
+  /* 下に余白 */
 }
 .list-c2 .list h4 .sub-text {
   position: relative;
   padding: 0 5rem;
+  /* 上下、左右への余白 */
 }
 .list-c2 .list h4 .sub-text::before, .list-c2 .list h4 .sub-text::after {
   content: "";
   position: absolute;
   top: 50%;
-  width: 5rem;
+  width: 2rem;
+  /* 線の長さ */
   border-top: 1px solid #fff;
+  /* ラインの幅、線種、色 */
 }
 .list-c2 .list h4 .sub-text::before {
   left: 0;
@@ -378,30 +389,41 @@ footer .icons i {
 }
 .list-c2 .list .text {
   position: relative;
-  z-index: 3;
+  z-index: 2;
+  /* 文字が画像の上に来るように */
   font-size: 0.85rem;
+  /* 文字サイズ */
 }
-@media screen and (min-width: 600px) {
-  .list-c2 .list-c2 {
-    flex-direction: row;
-  }
-  .list-c2 .list-c2 > * {
-    flex: 0 0 48%;
-  }
-  .list-c2 .list-c2 .list {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+.list-c2 .list::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  /* 写真に重ねておく半透明の黒い色 */
+  transition: transform 0.3s 0.1s;
+  /* アニメーションの速度 */
 }
-@media screen and (max-width: 599px) {
-  .list-c2 {
-    flex-direction: column;
-  }
-  .list-c2 .list {
-    width: 100%;
-    padding: 2rem 5%;
-  }
+.list-c2 .list:hover::before {
+  transform: translateY(100%);
+  /* マウスオンで半透明の黒を枠外へ出す */
+}
+.list-c2 .list.image1, .list-c2 .list.image2 {
+  background: url("../images/sample4.jpg") no-repeat center center/cover;
+  /* 画像が最背面に配置されるように */
+}
+.list-c2 .list.image2 {
+  background: url("../images/sample5.jpg") no-repeat center center/cover;
+}
+.list-c2 .list .btn2 a {
+  background: rgba(0, 0, 0, 0.7);
+  /* 背景色 */
+}
+.list-c2 .list .btn1 a {
+  text-shadow: none;
+  /* テキストの影を消す */
 }
 
 /*お知らせブロック
@@ -420,73 +442,6 @@ footer .icons i {
 }
 .new .new dt {
   padding-right: 4rem;
-}
-
-.faq {
-  background: #5E5C5A;
-  color: #3b2b2b;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding: 2rem;
-}
-.faq h2 {
-  display: flex;
-  align-items: center;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  font-size: 2rem;
-  font-weight: 200;
-  letter-spacing: 0.4em;
-}
-.faq h2 .question {
-  color: #ff9900;
-  font-size: 2rem;
-}
-.faq h2 .kazari {
-  color: #cccccc;
-  /* 「FAQ」の色 */
-  font-size: 9rem;
-  /* もっと大きく表示 */
-  writing-mode: vertical-lr;
-  /* タテ書きに変更 */
-  letter-spacing: 0.2em;
-  margin-left: auto;
-  /* 右端に寄せる */
-}
-@media (max-width: 768px) {
-  .faq h2 {
-    /* スマホの画面サイズ以下の場合 */
-  }
-  .faq h2 .kazari {
-    display: none;
-    /* スマホでは表示しない */
-  }
-}
-.faq h2 .text {
-  color: #999999;
-  width: 100%;
-}
-.faq h2 section {
-  width: 100%;
-}
-.faq h2 ul {
-  padding-left: 1.5rem;
-}
-.faq h2 li {
-  margin-bottom: 2rem;
-}
-@media screen and (max-width: 600px) {
-  .faq h2 h2 {
-    text-align: center;
-  }
-  .faq h2 section {
-    width: 100%;
-    padding-left: 2rem;
-    padding-right: 2rem;
-  }
 }
 
 /* 画面幅600px以上の追加指定 */
@@ -572,7 +527,7 @@ footer .icons i {
 .box1 {
   overflow-x: visible;
   position: relative;
-  background: #f5f4ec;
+  background: #fff2d7;
   padding: var(--space-large);
   margin-top: 10vw;
 }
@@ -580,7 +535,7 @@ footer .icons i {
   position: absolute;
   right: 0;
   top: -13.5vw;
-  color: #f5f4ec;
+  color: #fff8d7;
   font-size: 7vw;
   line-height: 1;
 }
@@ -751,49 +706,4 @@ footer .icons i {
   .list1 .text {
     width: 40%;
   }
-}
-.list1 .btn2 a {
-  color: #fff;
-  border: 1px solid #fff;
-}
-.list1 .btn2 a:hover {
-  background: rgba(0, 0, 0, 0.8);
-}
-.list1 .btn3 {
-  text-align: right;
-  letter-spacing: 0.1em;
-}
-.list1 .btn3 a {
-  display: inline-block;
-  text-decoration: none;
-  color: inherit;
-  position: relative;
-  padding-right: 5rem;
-}
-.list1 .btn3 a::after {
-  content: "";
-  background: url("../images/arrow1.svg") no-repeat right center/100px;
-  display: block;
-  position: absolute;
-  right: 0;
-  bottom: -1rem;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  transition: 0.3s;
-  border: 1px solid var(--primary-color);
-}
-.list1 .btn3 a:hover::after {
-  background-color: var(--primary-color);
-  background-position: left center;
-}
-.list1 .btn3.white a {
-  color: #fff;
-}
-.list1 .btn3.white a::after {
-  background: url("../images/arrow1_white.svg") no-repeat right center/100px;
-  border: 1px solid #fff;
-}
-.list1 .btn3.white a:hover::after {
-  background-color: #fff;
 }/*# sourceMappingURL=style.css.map */
