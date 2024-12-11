@@ -141,7 +141,7 @@ body:not(.home) header {
   left: 2vw;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 768px) {
   #logo {
     width: 200px;
     top: 0;
@@ -153,7 +153,7 @@ header nav ul {
   list-style: none;
 }
 
-@media screen and (min-width: 900px) {
+@media screen and (min-width: 768px) {
   header nav ul {
     margin-right: 1vw;
     display: flex;
@@ -314,7 +314,7 @@ body {
   /* テキスト部分はクリックできないようにする */
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 768px) {
   .slide-text {
     font-size: 20px;
     /* スマホ用に文字サイズを小さく調整 */
@@ -368,7 +368,7 @@ main h2 span.sub-text.no-line {
   /* スマホ向けのスタイル */
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 768px) {
   .yoko {
     padding-top: 50px;
     /* スマホ時にpadding-topを追加 */
@@ -389,7 +389,7 @@ footer {
   padding: 3vw;
 }
 
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 768px) {
   footer {
     display: flex;
     justify-content: space-between;
@@ -401,7 +401,7 @@ footer .image {
   text-align: center;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 768px) {
   footer .image {
     width: auto;
   }
@@ -416,7 +416,7 @@ footer .text {
   gap: 5rem;
 }
 
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 768px) {
   footer .text {
     /* flex direction is already handled above */
   }
@@ -499,7 +499,7 @@ footer .icons i {
   display: block;
 }
 
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 768px) {
   .list-c2 {
     display: flex;
     /* 横並びにする */
@@ -655,7 +655,7 @@ footer .icons i {
 }
 
 /* 画面幅600px以上の追加指定 */
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 768px) {
   .faq .text {
     width: 50%;
   }
@@ -690,7 +690,7 @@ footer .icons i {
   flex-direction: column;
 }
 
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 768px) {
   .list-yoko-scroll .list {
     width: 28%;
     padding: 2rem;
@@ -789,13 +789,13 @@ footer .icons i {
   margin-bottom: 5rem;
 }
 
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 768px) {
   .brand .text {
     margin-bottom: 0;
   }
 }
 
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 768px) {
   .brand {
     display: flex;
     gap: 5vw;
@@ -953,7 +953,7 @@ footer .icons i {
   top: 0;
 }
 
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 768px) {
   .list1 .text {
     width: 40%;
   }
