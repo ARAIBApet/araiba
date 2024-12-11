@@ -1,16 +1,6 @@
-@media screen and (max-width: 500px) {
-  #svg-box {
-    border-radius: 10px;
-  }
-
-  #svg-box svg {
-    display: none;
-  }
-}
-
 #svg-box {
   flex-shrink: 0;
-  padding: 0 var(--space-small);
+  padding: 0 16px;
   position: relative;
   overflow: hidden;
 }
@@ -20,14 +10,12 @@
   height: 0;
   padding-top: 56.25%;
   position: relative;
-  -webkit-clip-path: url(#myClip1);
-  clip-path: url(#myClip1);
 }
 
 .slide-type1 .slide {
   position: absolute;
-  right: 0px;
-  top: 0px;
+  top: 0;
+  right: 0;
   width: 100%;
   height: 100%;
   opacity: 0;
@@ -52,7 +40,6 @@
   position: absolute;
   width: 100%;
   bottom: 10px;
-  left: 0px;
 }
 
 .slide-type1 .slide-indicators .indicator {
@@ -68,32 +55,6 @@
 
 .slide-type1 .slide-indicators .indicator.active {
   background: #000;
-}
-
-.slide-type1 .slide {
-  pointer-events: none;
-}
-
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-.animation-text {
-  position: absolute;
-  z-index: 1;
-  width: 30vw;
-  right: -7vw;
-  bottom: calc(-1 * var(--space-small));
-}
-
-.animation-text .spin {
-  animation: spin 150s linear infinite;
 }
 
 /*# sourceMappingURL=slide.css.map */
