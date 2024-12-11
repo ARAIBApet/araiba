@@ -136,7 +136,7 @@ body:not(.home) header {
 }
 @media screen and (max-width: 500px) {
   #logo {
-    width: 60px;
+    width: 100px;
     top: 0;
   }
 }
@@ -197,6 +197,16 @@ main h2 span.sub-text.no-line {
   padding-top: 0;
 }
 
+.yoko {
+  /* スマホ向けのスタイル */
+}
+@media screen and (max-width: 600px) {
+  .yoko {
+    padding-top: 50px;
+    /* スマホ時にpadding-topを追加 */
+  }
+}
+
 main h3 {
   font-weight: 600;
   font-size: 1.4rem;
@@ -225,7 +235,7 @@ footer .image {
     width: auto;
   }
   footer .image img {
-    width: 80px;
+    width: 300px;
   }
 }
 footer .text {
@@ -259,7 +269,7 @@ footer .icons i {
   gap: 0.5rem;
   grid-template-areas: "img1 img2 img2" "img1 img3 img3" "img4 img3 img5" "img4 img3 img6";
 }
-.gallery .img {
+.gallery img {
   display: block;
   width: 100%;
   height: 100%;
@@ -267,22 +277,28 @@ footer .icons i {
      object-fit: cover;
   border-radius: 0.5rem;
 }
-.gallery .img1 {
+
+.img1 {
   grid-area: img1;
 }
-.gallery .img2 {
+
+.img2 {
   grid-area: img2;
 }
-.gallery .img3 {
+
+.img3 {
   grid-area: img3;
 }
-.gallery .img4 {
+
+.img4 {
   grid-area: img4;
 }
-.gallery .img5 {
+
+.img5 {
   grid-area: img5;
 }
-.gallery .img6 {
+
+.img6 {
   grid-area: img6;
 }
 
@@ -291,6 +307,8 @@ footer .icons i {
 .list-c2 {
   display: flex;
   flex-wrap: wrap;
+  /* PC画面では横並びにする */
+  /* スマートフォン画面では縦並びにする */
 }
 .list-c2 > a {
   text-decoration: none;
@@ -301,18 +319,16 @@ footer .icons i {
   position: relative;
   overflow-y: hidden;
   color: #fff;
-  padding: 5rem 2rem;
+  padding: 5rem 10rem;
   margin: 1rem 0;
-  transition: all 0.5s ease;
-  width: 50%;
-  /* 2枚で横並びにするために幅を50%に設定 */
+  z-index: 1;
+  /* 画像部分のマウスオーバー時（画像のみぼかす） */
 }
 .list-c2 .list.image1, .list-c2 .list.image2 {
   background-size: cover;
-  /* 画像を親要素いっぱいに広げる */
   background-position: center;
-  height: 500px;
-  /* 高さを大きく設定 */
+  height: 80%;
+  width: 100%;
   transition: all 0.5s ease;
 }
 .list-c2 .list.image1 {
@@ -321,9 +337,9 @@ footer .icons i {
 .list-c2 .list.image2 {
   background: url("../images/sample5.jpg") no-repeat center center/cover;
 }
-.list-c2 .list:hover {
+.list-c2 .list:hover .image1,
+.list-c2 .list:hover .image2 {
   filter: blur(3.5px);
-  /* 画像だけをぼかす */
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
 }
 .list-c2 .list h4 {
@@ -331,7 +347,6 @@ footer .icons i {
   line-height: 1.2;
   position: relative;
   z-index: 2;
-  /* 文字が画像の上に来るようにz-indexを設定 */
 }
 .list-c2 .list h4 .main-text {
   display: block;
@@ -352,7 +367,7 @@ footer .icons i {
   content: "";
   position: absolute;
   top: 50%;
-  width: 2rem;
+  width: 5rem;
   border-top: 1px solid #fff;
 }
 .list-c2 .list h4 .sub-text::before {
@@ -363,17 +378,29 @@ footer .icons i {
 }
 .list-c2 .list .text {
   position: relative;
-  z-index: 1;
+  z-index: 3;
   font-size: 0.85rem;
 }
 @media screen and (min-width: 600px) {
+  .list-c2 .list-c2 {
+    flex-direction: row;
+  }
   .list-c2 .list-c2 > * {
-    flex: 1;
+    flex: 0 0 48%;
   }
   .list-c2 .list-c2 .list {
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+}
+@media screen and (max-width: 599px) {
+  .list-c2 {
+    flex-direction: column;
+  }
+  .list-c2 .list {
+    width: 100%;
+    padding: 2rem 5%;
   }
 }
 
@@ -395,58 +422,71 @@ footer .icons i {
   padding-right: 4rem;
 }
 
-/*よく頂く質問ブロック
----------------------------------------------------------------------------*/
 .faq {
   background: #5E5C5A;
-  color: #fff;
+  color: #3b2b2b;
   position: relative;
-}
-@media screen and (min-width: 600px) {
-  .faq {
-    display: flex;
-    flex-direction: row-reverse;
-    justify-content: space-between;
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 2rem;
 }
 .faq h2 {
+  display: flex;
+  align-items: center;
+  width: 100%;
   margin: 0;
   padding: 0;
   font-size: 2rem;
   font-weight: 200;
   letter-spacing: 0.4em;
 }
-.faq h2 .kazari {
-  line-height: 1;
-  font-size: 0.9rem;
+.faq h2 .question {
+  color: #ff9900;
+  font-size: 2rem;
 }
-@media screen and (min-width: 600px) {
+.faq h2 .kazari {
+  color: #cccccc;
+  /* 「FAQ」の色 */
+  font-size: 9rem;
+  /* もっと大きく表示 */
+  writing-mode: vertical-lr;
+  /* タテ書きに変更 */
+  letter-spacing: 0.2em;
+  margin-left: auto;
+  /* 右端に寄せる */
+}
+@media (max-width: 768px) {
   .faq h2 {
-    writing-mode: vertical-lr;
-    margin-right: 18vw;
+    /* スマホの画面サイズ以下の場合 */
   }
   .faq h2 .kazari {
-    display: block;
+    display: none;
+    /* スマホでは表示しない */
   }
 }
-.faq section {
-  width: 50%;
+.faq h2 .text {
+  color: #999999;
+  width: 100%;
+}
+.faq h2 section {
+  width: 100%;
+}
+.faq h2 ul {
+  padding-left: 1.5rem;
+}
+.faq h2 li {
+  margin-bottom: 2rem;
 }
 @media screen and (max-width: 600px) {
-  .faq h2 {
+  .faq h2 h2 {
     text-align: center;
   }
-  .faq section {
+  .faq h2 section {
     width: 100%;
     padding-left: 2rem;
     padding-right: 2rem;
   }
-}
-.faq ul {
-  padding-left: 1.5rem;
-}
-.faq li {
-  margin-bottom: 2rem;
 }
 
 /* 画面幅600px以上の追加指定 */
@@ -609,8 +649,14 @@ footer .icons i {
 /* list1（製品ブランドコーナー） */
 .logo-kazari {
   background: url("../images/logo.png") no-repeat left top/50%;
-  background-position: 17% top;
+  background-position: 17% 50px;
   /* 横位置を左から10%の位置に変更 */
+}
+@media (max-width: 768px) {
+  .logo-kazari {
+    background-size: 70%;
+    background-position: 30% 50px;
+  }
 }
 
 /*１枚目の写真*/
